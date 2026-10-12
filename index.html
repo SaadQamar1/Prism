@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#151514" />
+    <meta name="description" content="Prism is your private browser photo studio. Edit images, work with layers, and save projects locally. No account or API keys." />
+    <link rel="icon" type="image/svg+xml" href="./assets/prism.svg" />
+    <title>Prism · Your private photo studio</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="modal"></dialog>
+    <input id="import-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,.json,.prism" multiple hidden />
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

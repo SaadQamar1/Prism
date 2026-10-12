@@ -1,0 +1,61 @@
+body, body.theme-dark {
+  --background:#141514; --text-color:#e6e5df; --text-color-muted:#94968f;
+  --section-background-color:#1c1d1b; --area-background-color:#22231f;
+  --block-background-color:#1c1d1b; --header-background-color:#1c1d1b;
+  --button-background-color:#282925; --button-background-color-hover:#3d3c35;
+  --button-background-color-active:#33332d; --button-text-color-active:#ffa761;
+  --input-background-color:#282925; --input-background-color-hover:#30312c;
+  --input-text-color:#e6e5df; --input-border-color:#3b3d35; --input-border-color-active:#ffa761;
+  --menu-background-color:#1b1c19; --menu-text-color:#c8c9c0;
+  --background-color-active:#ffa761; --background-color-hover:#2f302a;
+  --text-color-active:#211b13; --border-color:#33352e;
+  --menu-dropdown-background-color:#252620; --menu-dropdown-hover-background-color:#3b3b30;
+  --menu-dropdown-border-color:#424437; --menu-dropdown-text-color:#e6e5df;
+  --scrollbar-track-color:#1c1d1b; --scrollbar-thumb-color:#414238;
+  --link-color:#ffae6d;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:12px;
+}
+.main_menu {height:38px; padding:0 15px 0 64px; border-bottom:1px solid #33352e; background:#1c1d1b;}
+.main_menu .menu_bar > li > a {padding:10px 13px;}
+.wrapper {top:38px; bottom:0; grid-template-rows:52px 1fr;}
+.submenu {margin:0; height:52px; border-bottom:1px solid #33352e; background:#20211d;}
+.submenu .logo {width:125px; padding:0 16px; height:auto; margin:0; font:9px/1.4 Inter,sans-serif; letter-spacing:1.6px; color:#a2a398;}
+.submenu .logo:after {display:none;}
+.attributes {margin:0!important; padding:8px 12px; background:transparent; width:calc(100% - 130px); min-height:38px;}
+.attributes .item {margin-right:22px;}
+.sidebar_left {padding:9px; width:64px; margin:0; height:100%; background:#1c1d1b; border-right:1px solid #33352e; align-content:start; gap:5px;}
+.sidebar_left .item {width:42px; height:34px; border-radius:6px; margin:0; background:transparent; flex-shrink:0;}
+.sidebar_left .item:after {background-size:19px;}
+.sidebar_left .item:hover {background:#303129;}
+.sidebar_left .item.active {background:#ffa761;}
+.middle_area {margin:0; background:#141514;}
+.main_wrapper {background-image:radial-gradient(#2d2e28 1px,transparent 1px); background-size:20px 20px; margin:0;}
+.canvas_wrapper {box-shadow:0 12px 60px #0008; }
+.sidebar_right {width:262px; margin:0; padding:16px; background:#1c1d1b; border-left:1px solid #33352e; gap:4px;}
+.sidebar_right .block {border:0; border-radius:0; box-shadow:none; margin-bottom:16px;}
+.block h2 {padding:0 0 12px; color:#a5a79a; background:transparent; font-size:10px; letter-spacing:1.3px; font-weight:600; text-transform:uppercase; border-bottom:1px solid #33352e; border-radius:0;}
+.block .content {padding:12px 0 0;}
+.sidebar_right .preview {order:4;}
+.sidebar_right .colors {order:3;}
+.sidebar_right .details {order:1;}
+.sidebar_right .layers {order:2; flex:initial!important;}
+#info_base {display:none;}
+.layers_list .item {position:relative; margin:5px 0; padding:7px 0; background:#282925; border-radius:5px;}
+.layers_list .item.active {outline:1px solid #b67a42; background:#383127;}
+.layers_list .layer_name {font-size:11px;}
+.layers_list .item.active .layer_name {background:transparent; color:#ffe0c5;}
+.layer_add,.layers_arrow {border:1px solid #424438; border-radius:4px; min-height:27px; box-shadow:none;}
+input, select, button {font-family:inherit;}
+input:focus-visible,button:focus-visible,select:focus-visible,[role=button]:focus-visible {outline:2px solid #ffa761; outline-offset:2px;}
+.popup {border-radius:12px!important; overflow:hidden; border:1px solid #46463b!important;}
+.popup h2 {background:#2c2d27;}
+.color_area {border-radius:5px;}
+.mobile_menu {z-index:8;}
+@media(max-width:850px) {.sidebar_right {width:220px; padding:12px;}}
+@media(max-width:700px) {
+ .main_menu {padding:0 8px;} .main_menu .menu_bar > li > a {padding:10px 8px;}
+ .sidebar_right {position:absolute;right:-250px;top:52px;height:calc(100% - 52px);width:238px; box-shadow:-10px 0 25px #0005;}
+ .sidebar_left {position:absolute;left:-72px;top:52px;height:calc(100% - 52px);z-index:5;} .sidebar_left.active {left:0!important;}
+ .submenu .logo {display:none;} .attributes {width:100%;padding-left:10px;} .wrapper {grid-template-columns:1fr;grid-template-areas:"submenu" "main";}
+}

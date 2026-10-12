@@ -1,0 +1,3 @@
+.prism-engine-toast {position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:99999;background:#e5e9da;color:#243019;padding:12px 20px;max-width:calc(100% - 40px);border:1px solid #bdc9a5;border-radius:6px;font:12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;box-shadow:0 6px 24px #0005;cursor:pointer;}
+.prism-engine-toast.error {background:#f8d9ca;border-color:#e9a184;color:#542b1c;}
+.prism-engine-toast.warning {background:#f3dfa5;border-color:#d9c17e;color:#4b401b;}
