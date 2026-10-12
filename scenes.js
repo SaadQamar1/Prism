@@ -17,13 +17,19 @@ export function validateScene(scene) {
       || !Array.isArray(scene.layers) || !scene.layers.length || scene.layers.length > 500
       || !Array.isArray(scene.data) || scene.data.length > 500) throw new Error('Invalid project, or canvas exceeds 16 megapixels.');
   const ids = new Set();
-  const safeTypes = new Set([null, 'image', 'brush', 'pencil', 'line', 'arrow', 'rectangle', 'ellipse', 'text', 'gradient', 'polygon', 'star', 'heart', 'bezier_curve', 'triangle', 'trapezoid', 'rhombus', 'pentagon', 'hexagon', 'octagon', 'cross', 'parallelogram', 'cylinder', 'human', 'moon', 'smile', 'tear', 'callout', 'gear', 'borders']);
+  const safeTypes = new Set([null, 'image', 'brush', 'pencil', 'line', 'arrow', 'rectangle', 'ellipse', 'text', 'gradient', 'polygon', 'star', 'heart', 'bezier_curve', 'triangle', 'right_triangle', 'trapezoid', 'romb', 'rhombus', 'pentagon', 'hexagon', 'octagon', 'plus', 'cross', 'parallelogram', 'cylinder', 'human', 'moon', 'smile', 'tear', 'callout', 'cog', 'gear', 'borders']);
+  const systemFonts = new Set(['Arial','Courier','Impact','Helvetica','Monospace','Tahoma','Times New Roman','Verdana']);
   for (const item of scene.layers) {
     if (!Number.isInteger(item.id) || ids.has(item.id) || typeof item.name !== 'string' || !safeTypes.has(item.type)) throw new Error('Unsupported layer in imported project.');
     ids.add(item.id);
     // Uploaded projects never execute code or load remote image/font addresses.
     item.link = null; delete item.link_canvas;
     if (item.type === 'image') item.data = null;
+    if (item.type === 'text' && Array.isArray(item.data)) {
+      for (const line of item.data) for (const span of line) {
+        if (span.meta?.family && !systemFonts.has(span.meta.family)) throw new Error('This project uses a remote font. Change it to a system font before importing.');
+      }
+    }
     if (item.render_function !== null && item.render_function !== undefined
       && (!Array.isArray(item.render_function) || ![item.type,'shapes/' + item.type].includes(item.render_function[0]) || item.render_function[1] !== 'render')) throw new Error('Unsupported layer renderer.');
     if (Array.isArray(item.filters) && item.filters.some(filter => typeof filter.name !== 'string' || !/^[a-z_-]+$/i.test(filter.name))) throw new Error('Invalid filter.');
